@@ -1,30 +1,36 @@
 //URL de la API publica
-const apiURL=https://jsonplaceholder.typicode.com/posts;
+const apiURL = "https://rickandmortyapi.com/api/character";
 
 //Funcion para obtener datos desde la API
-function getsUsers() {
-    fetch(https://jsonplaceholder.typicode.com)
-    .then(response=> response.json())
-    .then(data=>{
-        const users= data.results; displayUsers(users);
+function getCharacters() {
+    fetch(apiURL)
+    .then(response=> {
+        if(!response.ok) { 
+            throw new Error('Network response was not ok?);
+                            }
+                            return response.json();
     })
+        .then(data=> {
+        const characters = data.results; displayCharacters(characters);
+        })
     .catch(error=> console.error('Error al obtener los datos:', error));
 }
 //Funcion para mostrar los datos en formato de tarjeta(card)
-function displayUsers(users){
-    const usersContainer = document.getElementById('users');
-    usersContainer.innerHTML ="";
+function displayCharacters(characters){
+    const charactersContainer = document.getElementById('characters');
+    charactersContainer.innerHTML ="";
     //Limpiar el contenedor antes de agregar nuevas tarjetas
-    users.forEach(user=>{
-      const userCard= document.createElement('div');
-      userCard.classList.add('card'); 
-      userCard.innerHTML= `<img src="${user.picture.large}" alt="Imagen de ${user.name.first}">
-      <h3>${user.name.first}${user.name.last}</h3>
-      <p>${user.location.city}, ${user.location.country}</p>
-      <p>${user.email}</p>`;
-      usersContainer.appendChild(userCard);
+    users.forEach(character=>{
+      const characterCard= document.createElement('div');
+      characterCard.classList.add('card'); 
+      characterCard.innerHTML= `<img src="${character.image}" alt="Imagen de ${character.name}">
+      <h3>${character.name}</h3>
+      <p>Especie: ${character.spceies}</p>
+      <p>Estado: ${character.status}</p>
+      <p>Ubicacion: ${character.location.name}</p>´;
+      charactersContainer.appendChild(characterCard);
 
     });
 }
 //Llamar a la funcion para obtenerlos datos al cargar la pagina
-getsUsers();
+getCharacters();
