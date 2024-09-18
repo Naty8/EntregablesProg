@@ -1,21 +1,19 @@
 //URL de la API publica
 const apiURL = "https://rickandmortyapi.com/api/character";
 
-//Funcion para obtener datos desde la API
-function getCharacters() {
+//Funcion para obtener los personajes de la API
+async function fetchCharacters() {
     fetch(apiURL)
-    .then(response=> {
-        if(!response.ok) { 
-            throw new Error('Network response was not ok?);
-                            }
-                            return response.json();
-    })
-        .then(data=> {
-        const characters = data.results; displayCharacters(characters);
-        })
-    .catch(error=> console.error('Error al obtener los datos:', error));
+    try {
+       const response = await fetch(apiURL);
+       const data = await response.json();
+  // Llamar a la función para mostrar los personajes  
+        displayCharacters(data.results);  
+    } catch (error) {  
+        console.error('Error al cargar los personajes:', error);  
+    }     
 }
-//Funcion para mostrar los datos en formato de tarjeta(card)
+//Funcion para mostrar los personajes en formato de tarjeta(card)
 function displayCharacters(characters){
     const charactersContainer = document.getElementById('characters');
     charactersContainer.innerHTML ="";
