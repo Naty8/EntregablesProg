@@ -2,7 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin:0;
     padding:0;
-    background-color: lightgreen;
+    background-color: lightblue;
 }
 .container {
     width: 80%;
@@ -21,6 +21,7 @@ h1{
     margin: 15px;
     padding: 15px;
     text-align: center;
+    display: inline-block;
 }
 .card img { 
     border-radius:50%;
@@ -35,3 +36,9 @@ h1{
     margin: 5px 0;
     color: #555;
 }
+* Flexbox para tarjetas responsivas */  
+.container {  
+    display: flex;   
+    flex-wrap: wrap;   
+    justify-content: center; /* Centrar las tarjetas */  
+}  
