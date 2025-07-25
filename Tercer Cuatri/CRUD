@@ -1,0 +1,68 @@
+use usuariosDB
+db.usuarios.insertMany([
+  {
+    nombre: "Ana",
+    apellido: "Pérez",
+    edad: 30,
+    dni: "12345678",
+    ciudad: "Rosario"
+  },
+  {
+    nombre: "Juan",
+    apellido: "García",
+    edad: 25,
+    dni: "23456789",
+    ciudad: "Córdoba"
+  },
+  {
+    nombre: "Lucía",
+    apellido: "Martínez",
+    edad: 28,
+    dni: "34567890",
+    ciudad: "Mendoza"
+  },
+  {
+    nombre: "Pedro",
+    apellido: "López",
+    edad: 32,
+    dni: "45678901",
+    ciudad: "Salta"
+  },
+  {
+    nombre: "Laura",
+    apellido: "Gómez",
+    edad: 29,
+    dni: "56789012",
+    ciudad: "La Plata"
+  }
+])
+db.usuarios.updateOne(
+  { nombre: "Ana" },
+  { $set: { email: "ana@gmail.com" } }
+)
+
+db.usuarios.updateOne(
+  { nombre: "Pedro" },
+  { $set: { email: "pedro@gmail.com" } }
+)
+db.usuarios.updateOne(
+  { nombre: "Ana" },
+  { $set: { email: "ana123@gmail.com" } }
+)
+
+db.usuarios.updateOne(
+  { nombre: "Pedro" },
+  { $set: { email: "pedro456@gmail.com" } }
+)
+db.usuarios.deleteOne({ nombre: "Laura" })
+db.usuarios.deleteOne({ nombre: "Juan" })
+db.usuarios.updateMany(
+  {},
+  { $set: { EstadoUsuario: "Activo" } }
+)
+db.usuarios.find({ email: "ana123@gmail.com" })
+db.usuarios.find({ email: "ana123@gmail.com" })
+db.usuarios.updateMany(
+  {},
+  { $set: { fechaRegistro: new Date() } }
+)

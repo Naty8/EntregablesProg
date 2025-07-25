@@ -1,0 +1,16 @@
+{
+  "codigo_reserva": "ABC123",
+  "estado": "confirmada",
+  "fecha_creacion": "2025-05-15",
+  "pasajero": {
+    "nombre": "María López",
+    "contacto": "maria@mail.com",
+    "identificacion": "12345678"
+  },
+  "vuelo": {
+    "aerolinea": "Air Europa",
+    "origen": "Buenos Aires",
+    "destino": "Madrid",
+    "horario": "2025-06-10T10:00:00"
+  }
+}

@@ -1,0 +1,53 @@
+// 1
+db.clientes.insertMany([
+  { nombre: "Juan", email: "juan@mail.com", edad: 35 },
+  { nombre: "Ana", email: "ana@mail.com", edad: 28 },
+  { nombre: "Pedro", email: "pedro@mail.com", edad: 40 }
+]);
+db.clientes.find({ edad: { $gt: 30 } });
+
+// 2
+db.clientes.updateOne({ nombre: "Juan" }, { $set: { email: "juan_nuevo@mail.com" } });
+
+// 3
+db.clientes.deleteOne({ email: "test@example.com" });
+
+// 4
+db.productos.insertMany([
+  { nombre: "TV", categoria: "Electrónica", precio: 500 },
+  { nombre: "Celular", categoria: "Electrónica", precio: 300 },
+  { nombre: "Silla", categoria: "Muebles", precio: 150 }
+]);
+
+// 5
+db.productos.find({ categoria: "Electrónica" });
+
+// 6
+db.productos.find({ precio: { $gt: 100 } });
+
+// 7 (validación esquema)
+db.createCollection("empleados", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["edad"],
+      properties: {
+        edad: {
+          bsonType: "int",
+          minimum: 19,
+          description: "Edad debe ser mayor a 18"
+        }
+      }
+    }
+  }
+});
+
+// 8
+db.clientes.updateMany({}, { $set: { activo: true } });
+
+// 9
+Usaría MongoDB para apps con datos dinámicos, no estructurados, gran escalabilidad y necesidad de alta velocidad de desarrollo (por ejemplo, apps móviles, redes sociales, etc.).
+
+// 10
+- **filter**: selecciona documentos que cumplen una condición.  
+- **agregación**: permite operaciones más complejas como agrupación, conteo, transformaciones.
